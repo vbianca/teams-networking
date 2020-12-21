@@ -6,12 +6,7 @@ function insertPersons (persons) {
     tbody.innerHTML = getPersonsHTML(persons);
 }
 function getPersonsHTML (persons) {
-    
-
-    var htmlElement= persons.map(function(person) {
-        return getPersonHTML(person);
-    } );
-    return htmlElement.join("");
+    return persons.map(getPersonHTML).join("");
     
 }
 function getPersonHTML (person) {
@@ -26,6 +21,5 @@ function getPersonHTML (person) {
 fetch('team.json')
   .then(res => res.json())
   .then(data =>{
-      
       insertPersons(data);
   });
