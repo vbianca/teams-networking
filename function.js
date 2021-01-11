@@ -12,8 +12,8 @@ const API = {
         METHOD:"GET"
     },
     DELETE: {
-        URL:"",
-        METHOD:"GET"
+        URL:"delete.json",
+        METHOD:"GET"  //delete
     }
 };
 
@@ -34,7 +34,9 @@ function getPersonHTML (person) {
     <td>${person.firstName}</td>
     <td>${person.lastName}</td>
     <td><a target="_blank" href="https://github.com/${gitHub}">GitHub</a></td>
-     <td></td>
+     <td>
+        <a href ="${API.DELETE.URL}?id=${person.id}">&#10006;</a>
+     </td>
  </tr>`;
 }
 let allPersons = [];
@@ -94,7 +96,7 @@ function saveTeamMember() {
          .then(r => {
              console.warn(r);
              if (r.success){
-                 alert('saving data...., please wait until we are ready.')
+                 alert('saving data...., please wait until we are ready.');
                     console.info('refresh list');
                     loadList();
              } 
